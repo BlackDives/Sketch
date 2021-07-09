@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.button-container {
+  display: flex;
+  direction: row;
+  justify-content: center;
+  height: 5vh;
+}
+
+.button-container button {
+  font-size: 20px;
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  /* grid-template-columns: repeat(64, 1fr);
+  grid-template-rows: repeat(64, 1fr); */
+  border: 2px solid black;
+  grid-gap: 2px;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.orig {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.block {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+}

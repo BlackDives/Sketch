@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="button-container"><button>Clear</button></div>
+    <div class="container"></div>
+    <script>
+      let container = document.querySelector(".container");
+      container.style.gridTemplateColumns = "repeat(16, 1fr)";
+      container.style.gridTemplateRows = "repeat(16, 1fr)";
+      let size = 256;
+      createGrid(size);
+
+      function createGrid(size) {
+        container.innerHTML = "";
+        for (let i = 0; i < size; i++) {
+          let brick = document.createElement("div");
+
+          brick.classList.add("orig");
+          brick.addEventListener("mouseover", (e) => {
+            brick.classList.remove("orig");
+            brick.classList.add("block");
+          });
+          container.appendChild(brick);
+        }
+      }
+
+      let clearGrid = document.querySelector("button");
+      clearGrid.addEventListener("click", function () {
+        let bricks = container.childNodes;
+        bricks.forEach((index) => {
+          index.classList.remove("block");
+          index.classList.add("orig");
+        });
+        let getIt = prompt("Enter new dimensions");
+        let newSize = parseInt(getIt);
+        if (newSize > 100) {
+          newSize = 16;
+        }
+        let x = parseInt(getIt);
+        let y = parseInt(getIt);
+        container.style.gridTemplateColumns = `repeat(${x}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${y}, 1fr)`;
+        createGrid(newSize * newSize);
+      });
+    </script>
+  </body>
+</html>
